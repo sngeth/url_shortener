@@ -11,4 +11,10 @@ RSpec.describe Url, type: :model do
     url = Url.create original_url: original_url
     expect(url.shorted_url).not_to eq nil
   end
+
+  it "only shortens valid urls" do
+    original_url = "ptth://:foobarbaz"
+    url = Url.create original_url: original_url
+    expect(url.shorted_url).to eq nil
+  end
 end
