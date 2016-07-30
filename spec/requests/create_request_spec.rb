@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe "new request", type: :request  do
   it "should create a url with original and shortened" do
-    post '/new', { original_url: "https://www.google.com" }
+    post '/new/https%3A%2F%2Fwww.google.com'
 
     parsed_json = JSON.parse response.body
     expect(parsed_json["original_url"]).to eq "https://www.google.com"
@@ -10,10 +10,9 @@ RSpec.describe "new request", type: :request  do
   end
 
   it "should not save shortened url with invalid url" do
-    post '/new', { original_url: "not a url" } do
+    post '/new/notavalidurltoshorten'
 
     parsed_json = JSON.parse response.body
     expect(parsed_json["error"]).to eq "Invalid URL"
-    end
   end
 end

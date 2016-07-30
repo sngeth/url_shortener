@@ -15,7 +15,7 @@ class HomeController < ApplicationController
     { original_url: @url.original_url,
       shortened_url: @url.shorted_url }
     else
-      { error: "Invalid URL" } if @url.valid?
+      { error: "Invalid URL" }
     end
   end
 end
