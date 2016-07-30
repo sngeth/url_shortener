@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   post 'new' => 'home#new'
+  get '/' => 'home#goto_original_url'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
